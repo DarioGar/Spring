@@ -1,20 +1,16 @@
 package com.example.models;
-
-import java.util.Set;
-
 import javax.persistence.*;
 
-
 @Entity
-@Table(name = "team")
-public class TeamModel{
-
+@Table(name = "assessment")
+public class AssessmentModel {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true,nullable = true)
     private Long id;
     private String name;
-    private Set TeamModel;
+    private Integer points;
 
 
     public Long getId() {
@@ -23,21 +19,19 @@ public class TeamModel{
     public void setId(Long id) {
         this.id = id;
     }
-    @Column(nullable = true)
+    @Column(nullable = false)
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
-    @JoinColumn(name = "fk_team_assessment", nullable = false)
-    public Set getTeamModel() {
-        return TeamModel;
+    @Column(nullable = false)
+    public Integer getPoints() {
+        return points;
     }
-    public void setTeamModel(Set teamModel) {
-        TeamModel = teamModel;
+    public void setPoints(Integer points) {
+        this.points = points;
     }
-    
-    
     
 }

@@ -7,5 +7,5 @@ import com.example.models.TeamModel;
 
 @Repository
     public interface TeamRepository extends CrudRepository<TeamModel,Long>{
-
+        public abstract TeamModel findById(Integer id);
     }

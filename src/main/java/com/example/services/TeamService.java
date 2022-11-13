@@ -1,6 +1,8 @@
 package com.example.services;
 
 import java.util.ArrayList;
+import java.util.Optional;
+
 import com.example.models.TeamModel;
 import com.example.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,20 @@ public class TeamService {
        return (ArrayList<TeamModel>) teamRepository.findAll();
     }
 
-    public TeamModel getTeamById(Long id){
-        return teamRepository.findById(id).get();
+    public Optional<TeamModel> getTeamById(Long id){
+        return teamRepository.findById(id);
+    }
+
+    public TeamModel saveEntity(TeamModel teamModel){
+        return teamRepository.save(teamModel);
+    }
+
+    public boolean deleteTeam(Long id) {
+        try {
+            teamRepository.deleteById(id);
+            return true;
+        }catch(Exception ex){
+            return false;
+        }
     }
 }
