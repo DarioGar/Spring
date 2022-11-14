@@ -3,6 +3,8 @@ package com.example.controllers;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import org.hibernate.annotations.common.util.impl.LoggerFactory;
+import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +42,7 @@ public class TeamController {
         return this.assessmentService.getAssessmentForTeam(team);
     }
 
-    @PostMapping()
+    @PostMapping(consumes = "text/plain")
     public TeamModel saveEntity(@RequestBody TeamModel team) {
         return this.teamService.saveEntity(team);
     }

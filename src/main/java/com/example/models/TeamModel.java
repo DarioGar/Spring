@@ -1,21 +1,24 @@
 package com.example.models;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
+
 
 
 @Entity
 @Table(name = "team")
 public class TeamModel{
 
-    @Id
+    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true,nullable = true)
+    @Id
     private Long id;
     private String name;
-    private Set TeamModel;
-
+    @OneToMany(targetEntity=AssessmentModel.class,mappedBy="id")
+    private List<AssessmentModel> assessment = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -30,13 +33,13 @@ public class TeamModel{
     public void setName(String name) {
         this.name = name;
     }
-    @JoinColumn(name = "fk_team_assessment", nullable = false)
-    public Set getTeamModel() {
-        return TeamModel;
+    public List<AssessmentModel> getAssessment() {
+        return assessment;
     }
-    public void setTeamModel(Set teamModel) {
-        TeamModel = teamModel;
+    public void setAssessment(List<AssessmentModel> assessment) {
+        this.assessment = assessment;
     }
+
     
     
     
