@@ -3,7 +3,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="member")
-public class MemberModel {
+public class BookingModel {
         
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,8 +11,8 @@ public class MemberModel {
     private Long id;
     private String name;
     @ManyToOne
-    @JoinColumn(name="team_id")
-    private TeamModel team;
+    @JoinColumn(name="team")
+    private FlightModel team;
 
     public Long getId() {
         return id;
@@ -28,10 +28,10 @@ public class MemberModel {
         this.name = name;
     }
 
-    public TeamModel getTeam() {
+    public FlightModel getTeam() {
         return team;
     }
-    public void setTeam(TeamModel team) {
+    public void setTeam(FlightModel team) {
         this.team = team;
     }
 
